@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import styles from './Input.module.scss';
 
 const Input = () => {
   return (
-    <li className='calculator__header-item'>
-        <label className='input__label'>
+    <li className={styles.input}>
+      <label className={styles.input__label}>
         <div>day</div>
-        <input type="text" placeholder='DD' className='input'/>
-        </label>
+        <input type="text" placeholder='DD' className={styles.input__body}/>
+      </label>
     </li>
   )
 }

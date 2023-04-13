@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+@import './components/colors.scss';
+
+$button_width: 60px;
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: hsl(0, 0%, 94%);
+    background-color: $light_grey;
+    position: relative;
+    height: 100vh;
+    width: 100%;
 }
 ul{
     list-style: none;
@@ -10,8 +16,45 @@ ul{
     padding: 0;
 }
 .calculator{
+    background-color: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 32px;
+    border-radius: 15px;
+    border-bottom-right-radius: 100px;
+    width: 550px;
+
     &__header{
         display: flex;
-        
+        gap: 20px;
+    }
+    &__button{
+        position: relative;
+        height: $button_width;
+    }
+    &__button-body{
+        border: none;
+        background-color: $purple;
+        width: $button_width;
+        height: $button_width;
+        border-radius: 50%;
+        padding: 15px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+
+        img{
+            width: 100%
+        }
+    }
+    &__button-line{
+        position: absolute;
+        top: calc($button_width / 2);
+        left: 0;
+        width: calc(100% - $button_width);
+        height: 1px;
+        background-color: $light_grey;
     }
 }

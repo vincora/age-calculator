@@ -1,0 +1,17 @@
+@import './colors.scss';
+
+.input{
+    color: $smokey_grey;
+    &__label{
+        text-transform: uppercase;
+        font-size: 0.7em;
+    }
+    &__body{
+        font-size: 2em;
+        width: 5em;
+        margin-top: 8px;
+        padding: 10px;
+        border: 1px solid $light_grey;
+        border-radius: 5px;
+    }
+}
