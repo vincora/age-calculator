@@ -24,7 +24,7 @@ ul{
     padding: 32px;
     border-radius: 15px;
     border-bottom-right-radius: 100px;
-    width: 550px;
+    width: 500px;
 
     &__header{
         display: flex;
@@ -44,6 +44,10 @@ ul{
         position: absolute;
         right: 0;
         cursor: pointer;
+
+        &:hover{
+            background-color: $off-black;
+        }
 
         img{
             width: 100%

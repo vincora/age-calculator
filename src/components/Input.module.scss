@@ -2,14 +2,15 @@
 
 .input{
     color: $smokey_grey;
+
     &__label{
         text-transform: uppercase;
         font-size: 0.7em;
     }
     &__body{
-        font-size: 2em;
+        font-size: 1.3em;
         font-weight: 800;
-        width: 5em;
+        width: 4em;
         margin-top: 8px;
         padding: 10px;
         border: 1px solid $light_grey;
@@ -18,7 +19,15 @@
             font-weight: 800;
         }
         &:focus{
+            outline-style: solid;
+            outline-width: thin;
             outline-color: $purple;
+        }
+        &:hover{
+            outline-style: solid;
+            outline-width: thin;
+            outline-color: $purple;
+            cursor: pointer;
         }
     }
 
