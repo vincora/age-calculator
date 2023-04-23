@@ -1,5 +1,4 @@
 import "./App.scss";
-import Input from "./components/Input";
 import Result from "./components/Result";
 import Button from "./Button";
 import { useState } from "react";
@@ -79,15 +78,15 @@ function App() {
               {...register("year", {
                 required: {
                   value: true,
-                  message: "This field is required"
+                  message: "This field is required",
                 },
                 validate: {
                   // positive: (v) => v > 0 || "Must be a valid year",
-                  
+
                   validYear: (v, values) => {
                     const now = DateTime.now();
                     return v < now.year || "Must be in the past";
-                  }
+                  },
                 },
               })}
             />
