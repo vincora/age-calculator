@@ -81,8 +81,6 @@ function App() {
                   message: "This field is required",
                 },
                 validate: {
-                  // positive: (v) => v > 0 || "Must be a valid year",
-
                   validYear: (v, values) => {
                     const now = DateTime.now();
                     return v < now.year || "Must be in the past";
@@ -92,9 +90,6 @@ function App() {
             />
             <p className="input__error">{errors.year?.message}</p>
           </label>
-          {/* <Input label="day" name="day" placeholder="DD" validation={validation}/>
-            <Input label="month" name="month" placeholder="MM" validation={validation} />
-            <Input label="year" name="year" placeholder="YYYY" validation={validation}/> */}
         </div>
         <Button type="submit" />
       </form>
