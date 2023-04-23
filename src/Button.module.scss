@@ -1,0 +1,36 @@
+@import './components/colors.scss';
+
+$button_width: 60px;
+
+.button{
+    position: relative;
+    height: $button_width;
+    &__body{
+        border: none;
+        background-color: $purple;
+        width: $button_width;
+        height: $button_width;
+        border-radius: 50%;
+        padding: 15px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+    
+        &:hover{
+            background-color: $off-black;
+        }
+    
+        img{
+            width: 100%
+        }
+    }
+    &__line{
+        position: absolute;
+        top: calc($button_width / 2);
+        left: 0;
+        width: calc(100% - $button_width);
+        height: 1px;
+        background-color: $light_grey;
+    }
+}
+

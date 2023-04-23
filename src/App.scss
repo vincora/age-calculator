@@ -62,3 +62,48 @@ ul{
         background-color: $light_grey;
     }
 }
+.input{
+    color: $smokey_grey;
+
+    &__label{
+        text-transform: uppercase;
+        font-size: 0.7em;
+    }
+    &__body{
+        font-size: 1.3em;
+        font-weight: 800;
+        width: 4em;
+        margin-top: 8px;
+        padding: 10px;
+        border: 1px solid $light_grey;
+        border-radius: 5px;
+        &::placeholder{
+            font-weight: 800;
+        }
+        &:focus{
+            outline-style: solid;
+            outline-width: thin;
+            outline-color: $purple;
+        }
+        &:hover{
+            outline-style: solid;
+            outline-width: thin;
+            outline-color: $purple;
+            cursor: pointer;
+        }
+    }
+    &__error{
+        font-weight: 400;
+        font-style: italic;
+        color: $light_red;
+        font-size: 10px;
+    }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
