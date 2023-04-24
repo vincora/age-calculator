@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution URL](https://github.com/vincora/age-calculator)
+- Live Site URL: [Live site URL](https://vincora.github.io/age-calculator/)
 
 ## My process
 
@@ -62,7 +62,7 @@ I use a free version of Frontend Mentor, so I don't have the accurate markup siz
 
 ### Useful resources
 
-- [React-hook-form homepage](https://react-hook-form.com/get-started) - React hook form homepage. I've used this and youtube videos to learn how to use react-hook-form library.  
+- [React-hook-form homepage](https://react-hook-form.com/get-started)   
 - [Luxon library documentation](https://moment.github.io/luxon/#/tour)
 
 
