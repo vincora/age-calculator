@@ -3,6 +3,17 @@
 
 $button_width: 60px;
 
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 16px;
+    @media (max-width: 520px) {
+        font-size: 12px;
+    }
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color: $light_grey;
@@ -21,45 +32,29 @@ ul{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 32px;
+    padding: 2rem;
     border-radius: 15px;
     border-bottom-right-radius: 100px;
-    width: 500px;
+    max-width: 520px;
+    width: 100%;
+    @media (max-width: 520px) {
+        margin: 0 1rem;
+    }
 
     &__header{
+        width: 100%;
         display: flex;
         gap: 20px;
+        justify-content: flex-start;
+        @media (max-width: 520px) {
+            justify-content: center;
+        }
     }
     &__button{
-        position: relative;
-        height: $button_width;
-    }
-    &__button-body{
-        border: none;
-        background-color: $purple;
-        width: $button_width;
-        height: $button_width;
-        border-radius: 50%;
-        padding: 15px;
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-
-        &:hover{
-            background-color: $off-black;
+        margin-top: 0.5rem;
+        @media (max-width: 520px) {
+            margin-top: 2rem;
         }
-
-        img{
-            width: 100%
-        }
-    }
-    &__button-line{
-        position: absolute;
-        top: calc($button_width / 2);
-        left: 0;
-        width: calc(100% - $button_width);
-        height: 1px;
-        background-color: $light_grey;
     }
 }
 .input{
@@ -67,38 +62,58 @@ ul{
 
     &__label{
         text-transform: uppercase;
-        font-size: 0.7em;
+        font-size: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.15rem;
     }
     &__body{
-        font-size: 1.3em;
+        background-color: transparent;
+        font-size: 1.25rem;
         font-weight: 800;
-        width: 4em;
-        margin-top: 8px;
-        padding: 10px;
+        width: 7rem;
+        margin-top: 0.5rem;
+        padding: 0.75rem;
         border: 1px solid $light_grey;
         border-radius: 5px;
+        @media (max-width: 520px) {
+            width: 100%;
+        }
+
         &::placeholder{
             font-weight: 800;
+            vertical-align: middle;
         }
         &:focus{
-            outline-style: solid;
-            outline-width: thin;
-            outline-color: $purple;
+            outline: none;
+            border: 1px solid $purple;
+
         }
         &:hover{
-            outline-style: solid;
-            outline-width: thin;
-            outline-color: $purple;
             cursor: pointer;
+            border: 1px solid $purple;
         }
     }
     &__error{
+        display: none;
         font-weight: 400;
         font-style: italic;
         color: $light_red;
-        font-size: 10px;
+        font-size: 0.6rem;
+        padding: 0.6rem 0;
+        margin: 0;
+    }
+    &__error_show{
+        display: block;
+    }
+    &_invalid &__label{
+        color: $light_red;
+    }
+    &_invalid &__body{
+        outline: none;
+        border: 1px solid $light_red;
     }
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -107,3 +122,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+

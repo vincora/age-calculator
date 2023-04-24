@@ -1,15 +1,21 @@
 import "./App.scss";
 import Result from "./components/Result";
-import Button from "./Button";
+import Button from "./components/Button";
 import { useState } from "react";
 import { DateTime } from "luxon";
 import { useForm } from "react-hook-form";
+import cn from "classnames";
+
+const filterInputKeys = (event) => {
+  if (!/[0-9]/.test(event.key)) {
+    event.preventDefault();
+  }
+}
 
 function App() {
   const [result, setResult] = useState();
 
-  const { register, handleSubmit, formState, getValues } = useForm();
-  const { errors } = formState;
+  const { register, handleSubmit, formState:{errors} , getValues } = useForm();
 
   const countAge = () => {
     const data = getValues();
@@ -19,16 +25,17 @@ function App() {
     setResult(result);
     return start;
   };
+  
 
   return (
     <div className="calculator">
-      <form onSubmit={handleSubmit(countAge)} noValidate>
+      <form onSubmit={handleSubmit(countAge)} autoComplete="off" noValidate>
         <div className="calculator__header">
-          <label className="input">
+          <label className={cn('input', {'input_invalid': errors.day?.message})}>
             <div className="input__label">day</div>
             <input
+              onKeyDown={filterInputKeys}
               className="input__body"
-              type="number"
               placeholder="DD"
               {...register("day", {
                 required: {
@@ -51,9 +58,9 @@ function App() {
                 },
               })}
             />
-            <p className="input__error">{errors.day?.message}</p>
+            <p className={cn("input__error",{'input__error_show': errors.day?.message})}>{errors.day?.message}</p>
           </label>
-          <label className="input">
+          <label className={cn('input', {'input_invalid': errors.month?.message})}>
             <div className="input__label">month</div>
             <input
               className="input__body"
@@ -67,9 +74,9 @@ function App() {
                 },
               })}
             />
-            <p className="input__error">{errors.month?.message}</p>
+            <p className={cn("input__error",{'input__error_show': errors.month?.message})}>{errors.month?.message}</p>
           </label>
-          <label className="input">
+          <label className={cn('input', {'input_invalid': errors.year?.message})}>
             <div className="input__label">year</div>
             <input
               className="input__body"
@@ -88,10 +95,10 @@ function App() {
                 },
               })}
             />
-            <p className="input__error">{errors.year?.message}</p>
+            <p className={cn("input__error",{'input__error_show': errors.year?.message})}>{errors.year?.message}</p>
           </label>
         </div>
-        <Button type="submit" />
+        <div className="calculator__button"><Button type="submit" /></div>
       </form>
 
       <div className="calculator__result">

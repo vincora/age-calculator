@@ -1,17 +1,18 @@
-@import './components/colors.scss';
+@import './colors.scss';
 
-$button_width: 60px;
+$button_width: 4rem;
 
 .button{
     position: relative;
     height: $button_width;
+    
     &__body{
         border: none;
         background-color: $purple;
         width: $button_width;
         height: $button_width;
         border-radius: 50%;
-        padding: 15px;
+        padding: 1rem;
         position: absolute;
         right: 0;
         cursor: pointer;
@@ -31,6 +32,16 @@ $button_width: 60px;
         width: calc(100% - $button_width);
         height: 1px;
         background-color: $light_grey;
+    }
+    @media (max-width: 520px) {
+        &__body{
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+        &__line{
+            width: 100%;
+        }
     }
 }
 
