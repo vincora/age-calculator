@@ -6,17 +6,23 @@ import { DateTime } from "luxon";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 
+//Controlling that user can only type numbers in our inputs
 const filterInputKeys = (event) => {
   if (!/[0-9]/.test(event.key)) {
     event.preventDefault();
   }
-}
+};
 
 function App() {
-  const [result, setResult] = useState();
+  //React-hook-form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm();
 
-  const { register, handleSubmit, formState:{errors} , getValues } = useForm();
-
+  //Counting the difference between input data and today's date
   const countAge = () => {
     const data = getValues();
     const end = DateTime.now();
@@ -25,13 +31,17 @@ function App() {
     setResult(result);
     return start;
   };
-  
+
+  //Result state contains users age (in years, months and days)
+  const [result, setResult] = useState();
 
   return (
     <div className="calculator">
       <form onSubmit={handleSubmit(countAge)} autoComplete="off" noValidate>
         <div className="calculator__header">
-          <label className={cn('input', {'input_invalid': errors.day?.message})}>
+          <label
+            className={cn("input", { input_invalid: errors.day?.message })} //Add css style when input is invalid
+          >
             <div className="input__label">day</div>
             <input
               onKeyDown={filterInputKeys}
@@ -46,25 +56,33 @@ function App() {
                   positive: (v) => v > 0 || "Must be a valid day",
                   validDay: (v) => v < 32 || "Must be a valid day",
                   validDate: (v, values) => {
-                    if (!values.day || !values.month || !values.year) return;
+                    if (!values.day || !values.month || !values.year) return; // Validating if all fields are filled in
 
                     const date = DateTime.fromObject({
                       day: values.day,
                       month: values.month,
                       year: values.year,
-                    });
-                    return date.isValid || "Must be a valid date";
+                    }); 
+                    return date.isValid || "Must be a valid date"; // Creating a Data object from all form fields and checking if it is valid (using luxon method isValid)
                   },
                 },
               })}
             />
-            <p className={cn("input__error",{'input__error_show': errors.day?.message})}>{errors.day?.message}</p>
+            <p
+              className={cn("input__error", {
+                input__error_show: errors.day?.message, // Adds css style and shows error message when input value is invalid 
+              })}
+            >
+              {errors.day?.message}
+            </p>
           </label>
-          <label className={cn('input', {'input_invalid': errors.month?.message})}>
+          <label
+            className={cn("input", { input_invalid: errors.month?.message })}
+          >
             <div className="input__label">month</div>
             <input
               className="input__body"
-              type="number"
+              onKeyDown={filterInputKeys}
               placeholder="MM"
               {...register("month", {
                 required: "This field is required",
@@ -74,13 +92,21 @@ function App() {
                 },
               })}
             />
-            <p className={cn("input__error",{'input__error_show': errors.month?.message})}>{errors.month?.message}</p>
+            <p
+              className={cn("input__error", {
+                input__error_show: errors.month?.message,
+              })}
+            >
+              {errors.month?.message}
+            </p>
           </label>
-          <label className={cn('input', {'input_invalid': errors.year?.message})}>
+          <label
+            className={cn("input", { input_invalid: errors.year?.message })}
+          >
             <div className="input__label">year</div>
             <input
               className="input__body"
-              type="number"
+              onKeyDown={filterInputKeys}
               placeholder="YYYY"
               {...register("year", {
                 required: {
@@ -95,10 +121,19 @@ function App() {
                 },
               })}
             />
-            <p className={cn("input__error",{'input__error_show': errors.year?.message})}>{errors.year?.message}</p>
+            <p
+              className={cn("input__error", {
+                input__error_show: errors.year?.message,
+              })}
+            >
+              {errors.year?.message}
+            </p>
           </label>
         </div>
-        <div className="calculator__button"><Button type="submit" /></div>
+
+        <div className="calculator__button">
+          <Button type="submit" />
+        </div>
       </form>
 
       <div className="calculator__result">
