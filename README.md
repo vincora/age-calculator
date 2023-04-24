@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://github.com/vincora/age-calculator)
-- Live Site URL: [Live site URL](https://vincora.github.io/age-calculator/)
+- Solution URL: [https://github.com/vincora/age-calculator](https://github.com/vincora/age-calculator)
+- Live Site URL: [https://vincora.github.io/age-calculator/](https://vincora.github.io/age-calculator/)
 
 ## My process
 
