@@ -6,15 +6,16 @@ import { DateTime } from "luxon";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 
-//Controlling that user can only type numbers in our inputs
+//Controlling that user can type only numbers and special keys in our inputs
 const filterInputKeys = (event) => {
-  if (!/[0-9]/.test(event.key)) {
+  const valid = /[0-9]/.test(event.key) || event.key === "Backspace" || event.key === "Delete" || event.key === "Enter" || event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "Tab"
+
+  if (!valid) {
     event.preventDefault();
   }
 };
 
 function App() {
-  //React-hook-form
   const {
     register,
     handleSubmit,
@@ -40,7 +41,7 @@ function App() {
       <form onSubmit={handleSubmit(countAge)} autoComplete="off" noValidate>
         <div className="calculator__header">
           <label
-            className={cn("input", { input_invalid: errors.day?.message })} //Add css style when input is invalid
+            className={cn("input", { input_invalid: errors.day?.message })} //Adds css style when input is invalid
           >
             <div className="input__label">day</div>
             <input
