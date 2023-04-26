@@ -1,6 +1,6 @@
 @import './colors.scss';
 
-$button_width: 4rem;
+$button_width: 3rem;
 
 .button{
     position: relative;
@@ -12,7 +12,7 @@ $button_width: 4rem;
         width: $button_width;
         height: $button_width;
         border-radius: 50%;
-        padding: 1rem;
+        padding: 0.8rem;
         position: absolute;
         right: 0;
         cursor: pointer;
@@ -33,11 +33,14 @@ $button_width: 4rem;
         height: 1px;
         background-color: $light_grey;
     }
-    @media (max-width: 520px) {
+    @media (max-width: $maxwidth) {
         &__body{
             right: 0;
             left: 0;
             margin: 0 auto;
+            width: 3.5rem;
+            height: 3.5rem;
+            padding: 1rem;
         }
         &__line{
             width: 100%;
